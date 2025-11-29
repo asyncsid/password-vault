@@ -1,0 +1,116 @@
+# Compiled class files
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+HELP.md
+.gradle
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.iws
+*.ipr
+*.iws
+!.idea/modules.xml
+!.idea/misc.xml
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Spring Boot
+spring-boot-autoconfigure/
+*.jks
+*.p12
+*.jpi
+*.hpi
+BOOT-INF/
+META-INF/
+
+# Docker
+docker-compose.override.yml
+Dockerfile.*
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.env.*
+
+# Database
+*.sql.backup
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Testing
+/coverage/
+*.lcov
+.nyc_output
+
+# PasswordVault specific
+docker/mysql_data/
+docker/logs/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/

@@ -1,0 +1,17 @@
+-- Get all passwords for user with tags
+SELECT pe.*, GROUP_CONCAT(pt.tag) as tags
+FROM password_entries pe
+LEFT JOIN password_tags pt ON pe.id = pt.password_entry_id
+WHERE pe.user_id = 'siddhartha'
+GROUP BY pe.id;
+
+-- Search across name + notes
+SELECT * FROM password_entries
+WHERE MATCH(name, notes) AGAINST('github' IN NATURAL LANGUAGE MODE);
+
+-- Get password history
+SELECT ph.old_password, ph.changed_at
+FROM password_history ph
+JOIN password_entries pe ON ph.password_entry_id = pe.id
+WHERE pe.id = '11111111-1111-1111-1111-111111111111'
+ORDER BY ph.changed_at DESC;
