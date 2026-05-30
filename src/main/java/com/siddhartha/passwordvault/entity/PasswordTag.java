@@ -24,7 +24,7 @@ public class PasswordTag {
     @UuidGenerator
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "password_entry_id", nullable = false)
     private PasswordEntry passwordEntry;
 

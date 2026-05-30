@@ -25,13 +25,16 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
+    image: siddhartha/password-vault:v1    # ← Tagged image
     container_name: password-vault-api
     restart: always
     ports:
-      - "8080:8080"
+      - "8080:8080"    # Application port
+      - "5005:5005"    # Debug port
     environment:
       DB_USER: vault_app
       DB_PASSWORD: VaultSecure2025!
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
     depends_on:
       mysql:
         condition: service_healthy

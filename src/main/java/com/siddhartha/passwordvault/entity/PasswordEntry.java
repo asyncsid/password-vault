@@ -50,7 +50,7 @@ public class PasswordEntry {
     @OneToMany(mappedBy = "passwordEntry", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PasswordHistory> passwordHistory;
 
-    @OneToMany(mappedBy = "passwordEntry", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "passwordEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<PasswordTag> tags;
 
     @OneToMany(mappedBy = "passwordEntry", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
