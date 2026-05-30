@@ -7,8 +7,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,9 +25,16 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PasswordEntry {
     @Id
-    @GeneratedValue
-    @UuidGenerator
+    @Column(name = "id", length = 36, nullable = false, updatable = false)
+    @JdbcTypeCode(SqlTypes.VARCHAR)
+//    @GeneratedValue(strategy = GenerationType.UUID)
+//    @UuidGenerator
     private UUID id;
+
+    @PrePersist
+    protected void onCreate() {
+        if (id == null) id = UUID.randomUUID(); // "550e8400-e29b-41d4-a716-446655440000"
+    }
 
     @NotBlank
     @Column(nullable = false)

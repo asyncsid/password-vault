@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mysql:
-    image: mysql:8.0
+    image: mysql:8.4
     container_name: password-vault-mysql
     restart: always
     environment:
@@ -20,6 +20,25 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+
+#  postgres:
+#    image: postgres:16-alpine
+#    container_name: password-vault-postgres
+#    restart: always
+#    environment:
+#      POSTGRES_PASSWORD: root123           # superuser password
+#      POSTGRES_DB: password_vault
+#      POSTGRES_USER: vault_app             # owns the DB; no separate password var needed
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#      - ./postgres/init.sql:/docker-entrypoint-initdb.d/0-init.sql
+#    healthcheck:
+#      test: [ "CMD-SHELL", "pg_isready -U vault_app -d password_vault" ]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 10
 
   password-vault:
     build:
@@ -43,3 +62,4 @@ services:
 
 volumes:
   mysql_data:  # ← Survives docker compose down/up/delete
+#  postgres_data:

@@ -6,7 +6,7 @@
 
 CREATE DATABASE IF NOT EXISTS `password_vault`
     CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci;
+    COLLATE utf8mb4_general_ci;
 
 USE `password_vault`;
 
@@ -21,7 +21,7 @@ CREATE TABLE `users` (
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX `idx_users_email` (`email`),
     INDEX `idx_users_username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =====================================================
 -- 2. PASSWORD_ENTRIES (Core Table)
@@ -50,7 +50,7 @@ CREATE TABLE `password_entries` (
     INDEX `idx_website` (`website_url`(100)),
     INDEX `idx_email` (`email`),
     FULLTEXT KEY `ftx_search` (`name`, `notes`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =====================================================
 -- 3. PASSWORD_HISTORY (Audit Trail)
@@ -67,7 +67,7 @@ CREATE TABLE `password_history` (
 
     INDEX `idx_entry_id` (`password_entry_id`),
     INDEX `idx_changed_at` (`changed_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =====================================================
 -- 4. PASSWORD_TAGS (Many-to-Many Labels)
@@ -84,7 +84,7 @@ CREATE TABLE `password_tags` (
     UNIQUE KEY `uk_entry_tag` (`password_entry_id`, `tag`),
     INDEX `idx_tag` (`tag`),
     INDEX `idx_entry_tag` (`password_entry_id`, `tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =====================================================
 -- 5. ENTRY_NOTES (Rich Notes Support)
@@ -103,7 +103,7 @@ CREATE TABLE `entry_notes` (
 
     INDEX `idx_entry_id` (`password_entry_id`),
     FULLTEXT KEY `ftx_notes` (`title`, `content`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =====================================================
 -- 6. NOTE_TAGS (Notes Categorization)
@@ -119,7 +119,7 @@ CREATE TABLE `note_tags` (
 
     UNIQUE KEY `uk_note_tag` (`note_id`, `tag`),
     INDEX `idx_tag` (`tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =====================================================
 -- 7. SHARING (Future: Share entries with other users)
@@ -139,7 +139,7 @@ CREATE TABLE `shared_entries` (
 
     INDEX `idx_shared_with` (`shared_with_user_id`),
     INDEX `idx_expires` (`expires_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =====================================================
 -- 8. AUDIT LOG (Security Compliance)
@@ -157,7 +157,7 @@ CREATE TABLE `audit_log` (
     INDEX `idx_user_action` (`user_id`, `action`),
     INDEX `idx_created_at` (`created_at`),
     INDEX `idx_resource` (`resource_type`, `resource_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =====================================================
 -- 9. Create MySQL User for App

@@ -36,6 +36,7 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+docker/.DS_Store
 
 # Maven
 target/

@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -50,7 +51,12 @@ public class PasswordService {
                         .passwordEntry(entry)
                         .tag(tag)
                         .build();
-                entry.getTags().add(passwordTag);
+                if (entry.getTags() == null) {
+                    entry.setTags(new ArrayList<>());
+                } else {
+                    entry.getTags().add(passwordTag);
+                }
+
             });
         }
 
